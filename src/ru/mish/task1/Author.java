@@ -23,6 +23,6 @@ class Author {
         this.email = email;
     }
     @Override public String toString() {
-        return name + '(' + gender + ", " + email + ')';
+        return name + "(" + gender + ", " + email + ")";
     }
 }
