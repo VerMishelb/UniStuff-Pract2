@@ -1,6 +1,7 @@
 package ru.mish.task7;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 public class BookShelf {
@@ -10,7 +11,6 @@ public class BookShelf {
         books.add(book);
         books_amount = books.size();
     }
-
     public Book getEarliest() {
         if (books_amount < 1) { return null; }
 
@@ -40,12 +40,21 @@ public class BookShelf {
     }
 
     public void sortAscending() {
-        //Collections.sort(books);
-        //FIX ME
+        Collections.sort(books, (a, b) -> (a.year < b.year) ? -1: 0);
     }
 
-    private boolean compareYear(Book a, Book b) {
-        return a.getYear() > b.getYear();
+    @Override
+    public String toString() {
+        String r = "";
+
+        for (int i = 0; i < books_amount; ++i) {
+            r += books.get(i) + ( i < books_amount - 1 ? "\n\t" : "\n");
+        }
+
+        return "BookShelf{" +
+                "books=\n\t" + r +
+                ", books_amount=" + books_amount +
+                '}';
     }
 
     ArrayList<Book> books = new ArrayList<>();
